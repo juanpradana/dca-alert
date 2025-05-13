@@ -1,0 +1,9 @@
+pandas>=2.0.0
+numpy>=1.24.0
+python-binance>=1.0.19
+python-telegram-bot>=20.6
+TA-Lib>=0.4.28
+requests>=2.31.0
+certifi>=2025.4.26
+python-dotenv>=1.0.0
+pytz>=2023.3
