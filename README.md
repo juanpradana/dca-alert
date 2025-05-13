@@ -34,58 +34,84 @@ The project requires the following Python packages:
 - python-dotenv >= 1.0.0
 - pytz >= 2023.3
 
-## Installing TA-Lib
+## Installing TA-Lib and Setting Up Environment
 
-TA-Lib is required for technical analysis calculations. Here's how to install it on different operating systems:
+TA-Lib is required for technical analysis calculations. Follow these steps carefully for your operating system:
 
 ### Windows
 
-1. Download the appropriate wheel file from [here](https://www.lfd.uci.edu/~gohlke/pythonlibs/#ta-lib)
-   - For Python 3.8 64-bit: TA_Lib‑0.4.28‑cp38‑cp38‑win_amd64.whl
-   - For Python 3.9 64-bit: TA_Lib‑0.4.28‑cp39‑cp39‑win_amd64.whl
-   - For Python 3.10 64-bit: TA_Lib‑0.4.28‑cp310‑cp310‑win_amd64.whl
-   - For Python 3.11 64-bit: TA_Lib‑0.4.28‑cp311‑cp311‑win_amd64.whl
-
-2. Install the downloaded wheel file (replace with your downloaded version):
+1. Set up Python Virtual Environment:
 ```powershell
-pip install TA_Lib‑0.4.28‑cp310‑cp310‑win_amd64.whl
+# Create virtual environment
+python -m venv venv
+
+# Activate virtual environment
+.\venv\Scripts\Activate
+
+# Upgrade pip
+python -m pip install --upgrade pip
+```
+
+2. Download and Install TA-Lib:
+   - Download the TA-Lib installer from [ta-lib.org](https://ta-lib.org/install.html)
+   - Run the installer (`ta-lib-0.4.0-msvc.zip`)
+   - Extract the zip file
+   - Copy the extracted files to `C:\ta-lib`
+
+3. Install Python TA-Lib wrapper:
+```powershell
+pip install TA-Lib
 ```
 
 ### Ubuntu/Debian
 
-1. Install TA-Lib system dependencies:
+1. Set up Python Virtual Environment:
 ```bash
-sudo apt update
-sudo apt install -y build-essential wget
-wget http://prdownloads.sourceforge.net/ta-lib/ta-lib-0.4.0-src.tar.gz
-tar -xvf ta-lib-0.4.0-src.tar.gz
-cd ta-lib/
-./configure --prefix=/usr
-make
-sudo make install
+# Create virtual environment
+python3 -m venv venv
+
+# Activate virtual environment
+source venv/bin/activate
+
+# Upgrade pip
+pip install --upgrade pip
 ```
 
-2. Install the Python wrapper:
+2. Install TA-Lib system dependencies:
+```bash
+wget http://prdownloads.sourceforge.net/ta-lib/ta-lib-0.4.0-src.tar.gz
+tar -xvzf ta-lib-0.4.0-src.tar.gz
+cd ta-lib/
+./configure
+make
+sudo make install
+sudo ldconfig
+```
+
+3. Install Python TA-Lib wrapper:
 ```bash
 pip install TA-Lib
 ```
 
-Note: If you experience any issues with TA-Lib installation, make sure you have the latest pip version:
+4. If you encounter any issues, you might need to install additional dependencies:
 ```bash
-pip install --upgrade pip
+sudo apt-get install python3-dev
 ```
 
-## Installation
+### Verify Installation
+
+After installation, you can verify that TA-Lib is working correctly:
+```python
+python -c "import talib; print(talib.__version__)"
+```
+
+## Project Installation
+
+After setting up TA-Lib and activating your virtual environment:
 
 1. Clone the repository or download the source code
 
-2. Create a virtual environment (recommended):
-```powershell
-python -m venv venv
-.\venv\Scripts\activate
-```
-
-3. Install the required packages:
+2. Install the required packages:
 ```powershell
 pip install -r requirements.txt
 ```
