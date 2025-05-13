@@ -34,6 +34,47 @@ The project requires the following Python packages:
 - python-dotenv >= 1.0.0
 - pytz >= 2023.3
 
+## Installing TA-Lib
+
+TA-Lib is required for technical analysis calculations. Here's how to install it on different operating systems:
+
+### Windows
+
+1. Download the appropriate wheel file from [here](https://www.lfd.uci.edu/~gohlke/pythonlibs/#ta-lib)
+   - For Python 3.8 64-bit: TA_Lib‑0.4.28‑cp38‑cp38‑win_amd64.whl
+   - For Python 3.9 64-bit: TA_Lib‑0.4.28‑cp39‑cp39‑win_amd64.whl
+   - For Python 3.10 64-bit: TA_Lib‑0.4.28‑cp310‑cp310‑win_amd64.whl
+   - For Python 3.11 64-bit: TA_Lib‑0.4.28‑cp311‑cp311‑win_amd64.whl
+
+2. Install the downloaded wheel file (replace with your downloaded version):
+```powershell
+pip install TA_Lib‑0.4.28‑cp310‑cp310‑win_amd64.whl
+```
+
+### Ubuntu/Debian
+
+1. Install TA-Lib system dependencies:
+```bash
+sudo apt update
+sudo apt install -y build-essential wget
+wget http://prdownloads.sourceforge.net/ta-lib/ta-lib-0.4.0-src.tar.gz
+tar -xvf ta-lib-0.4.0-src.tar.gz
+cd ta-lib/
+./configure --prefix=/usr
+make
+sudo make install
+```
+
+2. Install the Python wrapper:
+```bash
+pip install TA-Lib
+```
+
+Note: If you experience any issues with TA-Lib installation, make sure you have the latest pip version:
+```bash
+pip install --upgrade pip
+```
+
 ## Installation
 
 1. Clone the repository or download the source code
